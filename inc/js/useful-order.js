@@ -185,6 +185,18 @@
 			this.start = function () {};
 		};
 		this.orderBy = function (index) {
+			// update the menu
+			this.updateMenu(index);
+			// update the list
+			this.updateList(index);
+		};
+		this.updateMenu = function (index) {
+			// reset all the sorters except the current index
+			for (var a = 0, b = this.sorters.length; a < b; a += 1) {
+				this.sorters[a].className = (a === index) ? 'order-by' : '';
+			}
+		};
+		this.updateList = function (index) {
 			var a, b, 
 				unsorted = [], 
 				sorted = [],
@@ -220,10 +232,6 @@
 			return function (evt) {
 				// cancel the click
 				evt.preventDefault();
-				// reset all the sorters except the current index
-				for (var a = 0, b = _this.sorters.length; a < b; a += 1) {
-					_this.sorters[a].className = (a === index) ? 'order-by' : '';
-				}
 				// sort the sortees by the selected sorter
 				_this.orderBy(index);
 			};
