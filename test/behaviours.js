@@ -1,5 +1,6 @@
 var webdriverjs = require('webdriverjs'),
-    assert      = require('assert');
+    assert      = require('assert'),
+    path        = 'http://local.woollymittens.nl/useful-order/';
 
 describe('Expected behaviours of "useful-order"', function(){
 
@@ -13,7 +14,7 @@ describe('Expected behaviours of "useful-order"', function(){
 
     it('should re-order the list of results by length', function(done) {
         client
-            .url('http://local.woollymittens.nl/useful-order/index.html')
+            .url(path)
             .getText('#order-list li:first-child .train', function(err, text) {
                 assert(err === null);
                 assert(text === 'Adamstown');
@@ -30,8 +31,8 @@ describe('Expected behaviours of "useful-order"', function(){
 
     it('should accept external "orderBy()" command', function(done){
         client
-            .url('http://local.woollymittens.nl/useful-order/index.html')
-            .execute('order.orderBy(2);', function (err) {
+            .url(path)
+            .execute( function () { order.orderBy(2); }, [], function (err, result) {
                 assert(err === null);
             })
             .getText('#order-list li:first-child .park', function(err, text) {

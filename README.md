@@ -78,6 +78,8 @@ The following commands are available for development:
 
 ## How to test the script
 
+These test uses Selenium from http://docs.seleniumhq.org/
+
 + `npm install webdriverjs` - Installs the webdriver prerequisite.
 + `npm install mocha -g` - Installs the prerequisite test framework.
 + `java -jar /Applications/Selenium/selenium-server-standalone-2.42.2.jar` - Starts Selenium.
