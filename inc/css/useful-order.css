@@ -26,7 +26,7 @@
 	Applies the "clearfix" hack to a container with floating content
 */
 /*
-	typography
+	fonts
 */
 @font-face {
   font-family: 'cosmo';
@@ -37,7 +37,16 @@
   font-variant: normal;
 }
 
-/* line 14, ../../src/scss/_fonts.scss */
+/* line 12, ../../src/scss/_fonts.scss */
+* {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: none;
+}
+
+/*
+	typography
+*/
+/* line 5, ../../src/scss/_typography.scss */
 *, *:before, *:after {
   box-sizing: border-box;
 }

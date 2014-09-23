@@ -6,7 +6,10 @@
 	This work is licensed under a Creative Commons Attribution 3.0 Unported License.
 */
 
-(function (useful) {
+// public object
+var useful = useful || {};
+
+(function(){
 
 	// invoke strict mode
 	"use strict";
@@ -41,12 +44,12 @@
 			}
 		};
 		this.updateList = function (index) {
-			var a, b, 
-				unsorted = [], 
+			var a, b,
+				unsorted = [],
 				sorted = [],
 				source = this.sorters[index].getAttribute('data-source'),
 				method = this.sorters[index].getAttribute('data-type'),
-				sortees = document.querySelectorAll( this.obj.getAttribute('data-target') ), 
+				sortees = document.querySelectorAll( this.obj.getAttribute('data-target') ),
 				parent = sortees[0].parentNode,
 				fragment = document.createDocumentFragment();
 			// get the sortee elements
@@ -84,4 +87,9 @@
 		this.start();
 	};
 
-}(window.useful = window.useful || {}));
+	// return as a require.js module
+	if (typeof module !== 'undefined') {
+		exports = module.exports = useful.Order;
+	}
+
+})();
