@@ -45,10 +45,15 @@ To enable the use of HTML5 tags in Internet Explorer 8 and lower, include *html5
 **data-type : {string}** - Indicated that the content is to be used as a number. (todo: date, currency, etc.)
 
 ```javascript
-var order = new useful.Order( document.getElementById('id') );
+var order = new useful.Order().init(
+    document.getElementById('id'),
+    function (by) {}
+);
 ```
 
 **id : {string}** - The ID attribute of an element somewhere in the document.
+
+**by : {string}** - How the content was sorted.
 
 ## How to control the script
 

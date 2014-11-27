@@ -101,8 +101,9 @@
 				<script src="./inc/js/useful-order.js"></script>
 				<script>
 				//<!--
-					var order = new useful.Order(
-						document.getElementById('order-menu')
+					var order = new useful.Order().init(
+						document.getElementById('order-menu'),
+						function (by) { console.log('sorted:', by); }
 					);
 				//-->
 				</script>
