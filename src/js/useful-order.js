@@ -6,46 +6,53 @@
 	This work is licensed under a Creative Commons Attribution 3.0 Unported License.
 */
 
-// create the constructor if needed
+// create the global object if needed
 var useful = useful || {};
-useful.Order = useful.Order || function () {};
 
-// extend the constructor
-useful.Order.prototype.init = function (obj, promise) {
-	// properties
-	this.obj = obj;
-	this.promise = promise || function () {};
+// extend the global object
+useful.Order = function () {
+
+	// PROPERTIES
+
 	this.sorters = [];
-	// methods
-	this.start = function () {
+
+	// METHODS
+
+	this.init = function (object, promise) {
+		// store the configuration
+		this.object = object;
+		this.promise = promise || function () {};
 		// get the sorter elements
-		this.sorters = this.obj.getElementsByTagName('a');
+		this.sorters = this.object.getElementsByTagName('a');
 		// add event listeners to all the sorters
 		for (var a = 0, b = this.sorters.length; a < b; a += 1) {
 			this.sorters[a].addEventListener('click', this.onSorterSelected(a));
 		}
-		// disable the start function so it can't be started twice
-		this.init = function () {};
+		// return the object
+		return this;
 	};
+
 	this.orderBy = function (index) {
 		// update the menu
 		this.updateMenu(index);
 		// update the list
 		this.updateList(index);
 	};
+
 	this.updateMenu = function (index) {
 		// reset all the sorters except the current index
 		for (var a = 0, b = this.sorters.length; a < b; a += 1) {
 			this.sorters[a].className = (a === index) ? 'order-by' : '';
 		}
 	};
+
 	this.updateList = function (index) {
 		var a, b,
 			unsorted = [],
 			sorted = [],
 			source = this.sorters[index].getAttribute('data-source'),
 			method = this.sorters[index].getAttribute('data-type'),
-			sortees = document.querySelectorAll( this.obj.getAttribute('data-target') ),
+			sortees = document.querySelectorAll( this.object.getAttribute('data-target') ),
 			parent = sortees[0].parentNode,
 			fragment = document.createDocumentFragment();
 		// get the sortee elements
@@ -69,7 +76,9 @@ useful.Order.prototype.init = function (obj, promise) {
 		// trigger the promise
 		this.promise(this.sorters[index].getAttribute('data-source'));
 	};
-	// events
+
+	// EVENTS
+
 	this.onSorterSelected = function (index) {
 		var _this = this;
 		return function (evt) {
@@ -79,9 +88,7 @@ useful.Order.prototype.init = function (obj, promise) {
 			_this.orderBy(index);
 		};
 	};
-	// go
-	this.start();
-	return this;
+
 };
 
 // return as a require.js module
