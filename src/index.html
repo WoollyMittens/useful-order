@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>useful-order.js: Ordering Lists</title>
+		<style>
+			html { font-family:Sans-Serif; font-size:75%; height:100%; }
+			body { _height:100%; line-height:180%; margin:0; min-height:100%; padding:1%; }
+			.example { max-width:960px; margin:0 auto; padding:0; clear:both; }
+			.example > article, .example > aside { width:98%; padding:2%; }
+			.example-left > article, .example-left > aside { width:48%; padding:1%; float:left; }
+			.example-right > article, .example-right > aside { width:48%; padding:1%; float:right; }
+		</style>
+		<!--[if lte IE 9]>
+			<meta http-equiv="imagetoolbar" content="no"/>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<section class="example example-left">
+			<article>
+				<h2>Ordering Lists</h2>
+				<p>Order lists of results by arbitrary fields.</p>
+				<p><a class="button downloadButton" href="http://github.com/WoollyMittens/useful-order" target="_blank">Download (GitHub)</a></p>
+			</article>
+			<aside>
+
+				<!-- Cut below this -->
+				<style>@import url("./css/useful-order.css");</style>
+				<dl id="order-menu" data-target="#order-list li">
+					<dt>Sort by:</dt>
+					<dd><a class="order-by" href="#start" data-source=".start">Start</a></dd>
+					<dd><a href="#finish" data-source=".finish">Finish</a></dd>
+					<dd><a href="#region" data-source=".park">Region</a></dd>
+					<dd><a href="#length" data-source=".park i" data-type="number">Length</a></dd>
+				</dl>
+				<ul id="order-list">
+				    <li style="background-image:url(./img/adamstown-awabakal-newcastle.jpg)">
+				        <a href="#adamstown-awabakal-newcastle">
+				        	<span class="sign from">From</span>
+				            <span class="sign start train">Adamstown</span>
+				            <span class="sign to">via</span>
+				            <span class="sign park">Awabakal <i>9h / 31km</i></span>
+				            <span class="sign to">to</span>
+				            <span class="sign finish train">Newcastle</span>
+				        </a>
+				    </li>
+				    <li style="background-image:url(./img/adamstown-lakemacquarie-teralba.jpg)">
+				        <a href="#adamstown-lakemacquarie-teralba">
+				        	<span class="sign from">From</span>
+				            <span class="sign start train">Adamstown</span>
+				            <span class="sign to">via</span>
+				            <span class="sign park">Lake Macquarie <i>9h / 35km</i></span>
+				            <span class="sign to">to</span>
+				            <span class="sign finish train">Teralba</span>
+				        </a>
+				    </li>
+				    <li style="background-image:url(./img/annabay-worimi-stockton.jpg)">
+				        <a href="#annabay-worimi-stockton">
+				        	<span class="sign from">From</span>
+				            <span class="sign start bus">Anna Bay</span>
+				            <span class="sign to">via</span>
+				            <span class="sign park">Worimi <i>9h / 36km</i></span>
+				            <span class="sign to">to</span>
+				            <span class="sign finish ferry">Stockton</span>
+				        </a>
+				    </li>
+				    <li style="background-image:url(./img/berowra-crosslands-hornsby.jpg)">
+				        <a href="#berowra-crosslands-hornsby">
+				        	<span class="sign from">From</span>
+				            <span class="sign start train">Berowra</span>
+				            <span class="sign to">via</span>
+				            <span class="sign park">Berowra Valley <i>13h / 27km</i></span>
+				            <span class="sign to">to</span>
+				            <span class="sign finish train">Hornsby</span>
+				        </a>
+				    </li>
+				    <li style="background-image:url(./img/blackheath-grandcanyon-blackheath.jpg)">
+				        <a href="#blackheath-grandcanyon-blackheath">
+				        	<span class="sign from">From</span>
+				            <span class="sign start train">Blackheath</span>
+				            <span class="sign to">via</span>
+				            <span class="sign park">Grand Canyon <i>7h / 17km</i></span>
+				            <span class="sign to">to</span>
+				            <span class="sign finish train">Blackheath</span>
+				        </a>
+				    </li>
+				    <li style="background-image:url(./img/blackheath-grosevalley-blackheath.jpg)">
+				        <a href="#blackheath-grosevalley-blackheath">
+				        	<span class="sign from">From</span>
+				            <span class="sign start train">Blackheath</span>
+				            <span class="sign to">via</span>
+				            <span class="sign park">Grose Valley <i>9h / 24km</i></span>
+				            <span class="sign to">to</span>
+				            <span class="sign finish train">Blackheath</span>
+				        </a>
+				    </li>
+				</ul>
+				<script src="./js/useful-order.js"></script>
+				<script>
+				//<!--
+					var order = new useful.Order().init(
+						document.getElementById('order-menu'),
+						function (by) { console.log('sorted:', by); }
+					);
+				//-->
+				</script>
+				<!-- Cut above this -->
+
+				<ul>
+					<li><a href="#" onclick="order.orderBy(2);return false;">Execute: order.orderBy(2);</a></li>
+				</ul>
+			</aside>
+		</section>
+	</body>
+</html>
