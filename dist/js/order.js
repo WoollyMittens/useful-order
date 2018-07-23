@@ -1,16 +1,13 @@
 /*
 	Source:
-	van Creij, Maurice (2014). "useful.order.js: Ordering HTML Lists", version 20141127, http://www.woollymittens.nl/.
+	van Creij, Maurice (2018). "order.js: Ordering HTML Lists", http://www.woollymittens.nl/.
 
 	License:
 	This work is licensed under a Creative Commons Attribution 3.0 Unported License.
 */
 
-// create the global object if needed
-var useful = useful || {};
-
-// extend the global object
-useful.Order = function () {
+// establish the class
+var Order = function (object, promise) {
 
 	// PROPERTIES
 
@@ -89,9 +86,11 @@ useful.Order = function () {
 		};
 	};
 
+	this.init(object, promise);
+
 };
 
 // return as a require.js module
 if (typeof module !== 'undefined') {
-	exports = module.exports = useful.Order;
+	exports = module.exports = Order;
 }
