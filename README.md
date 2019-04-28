@@ -9,13 +9,29 @@ Try the <a href="http://www.woollymittens.nl/default.php?url=useful-order">demo<
 The stylesheet is best included in the header of the document.
 
 ```html
-<link rel="stylesheet" href="./css/order.css"/>
+<link rel="stylesheet" href="css/order.css"/>
 ```
 
 This include can be added to the header or placed inline before the script is invoked.
 
 ```html
-<script src="./js/order.js"></script>
+<script src="js/order.js"></script>
+```
+
+Or use [Require.js](https://requirejs.org/).
+
+```js
+requirejs([
+	'js/order.js'
+], function(Order) {
+	...
+});
+```¯
+
+Or import into an MVC framework.
+
+```js
+var Order = require('js/order.js');
 ```
 
 ## How to start the script

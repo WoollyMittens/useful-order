@@ -91,5 +91,5 @@ var Order = function (object, promise) {
 };
 
 // return as a require.js module
-if (typeof define != 'undefined') define(['order'], function () { return Order });
+if (typeof define != 'undefined') define([], function () { return Order });
 if (typeof module != 'undefined') module.exports = Order;
